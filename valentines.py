@@ -52,15 +52,15 @@ st.markdown("<h3 style='text-align:center; color:darkred;'>Will you be my Valent
 dramatic_lines = [
     "💔 Oh no... my heart is breaking!",
     "😢 How could you say no to me?",
-    "🌹 Without you, Valentine's loses its meaning...",
-    "💫 Destiny insists... you must be mine!",
     "💕 Please... say YES, my love!"
 ]
 
 col1, col2 = st.columns(2)
 with col1:
     if st.button("Yes 💕"):
-        st.success("💖 Yay! You said YES! 💖 🎉 Balloons burst! 🎈 Confetti everywhere! 💕")
+        st.success("💖 Yay! You said YES! 💖 🎉")
+        st.markdown("<h2 style='text-align:center; color:red;'>I love you Suraj Pamadi ❤️</h2>", unsafe_allow_html=True)
+
         # Falling hearts across the screen
         hearts_html = "".join(
             [
