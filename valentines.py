@@ -50,10 +50,13 @@ dramatic_lines = [
 col1, col2 = st.columns(2)
 with col1:
     if st.button("Yes 💕"):
-        st.success("💖 Yay! You said YES! 💖 🎉 ")
-        # Add falling hearts
+        st.success("💖 Yay! You said YES! 💖 🎉 )
+        # Scatter hearts across the whole screen
         hearts_html = "".join(
-            [f"<div class='heart' style='left:{i*10}%; animation-duration:{3+i%3}s;'>❤️</div>" for i in range(10)]
+            [
+                f"<div class='heart' style='left:{random.randint(0,95)}%; animation-duration:{random.randint(3,6)}s; animation-delay:{random.uniform(0,2)}s;'>❤️</div>"
+                for _ in range(20)
+            ]
         )
         st.markdown(hearts_html, unsafe_allow_html=True)
 
