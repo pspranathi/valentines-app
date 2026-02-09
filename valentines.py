@@ -98,8 +98,3 @@ if "yes_clicked" in st.session_state:
         ]
     )
     st.markdown(hearts_html, unsafe_allow_html=True)
-
-    # Restart button
-    if st.button("🔄 Restart ❤️", key="restart_button"):
-        st.session_state.clear()
-        st.experimental_rerun()
