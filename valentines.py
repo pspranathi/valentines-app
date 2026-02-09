@@ -1,10 +1,9 @@
 import streamlit as st
 import random
 
-# Page setup
 st.set_page_config(page_title="Valentine's Surprise", layout="centered")
 
-# Romantic background using CSS
+# Romantic gradient background
 page_bg = """
 <style>
 [data-testid="stAppViewContainer"] {
@@ -17,11 +16,24 @@ page_bg = """
 [data-testid="stToolbar"] {
     right: 2rem;
 }
+
+/* Falling hearts animation */
+@keyframes fall {
+  0% {transform: translateY(-10%);}
+  100% {transform: translateY(110%);}
+}
+.heart {
+  position: fixed;
+  top: -10%;
+  font-size: 30px;
+  color: red;
+  animation: fall linear infinite;
+}
 </style>
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-# Title and subtitle
+# Title
 st.markdown("<h1 style='text-align:center; color:red;'>💝 Happy Valentine's Day 💝</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align:center; color:purple;'>Forever Yours ❤️</h2>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align:center; color:darkred;'>Will you be my Valentine?</h3>", unsafe_allow_html=True)
@@ -31,7 +43,6 @@ dramatic_lines = [
     "💔 Oh no... my heart is breaking!",
     "😢 How could you say no to me?",
     "🌹 Without you, Valentine's loses its meaning...",
-    "💫 Destiny insists... you must be mine!",
     "💕 Please... say YES, my love!"
 ]
 
@@ -39,7 +50,13 @@ dramatic_lines = [
 col1, col2 = st.columns(2)
 with col1:
     if st.button("Yes 💕"):
-        st.success("💖 Yay! You said YES! 💖 🎉 Balloons burst! 🎈 Confetti everywhere! 💕")
+        st.success("💖 Yay! You said YES! 💖 🎉 ")
+        # Add falling hearts
+        hearts_html = "".join(
+            [f"<div class='heart' style='left:{i*10}%; animation-duration:{3+i%3}s;'>❤️</div>" for i in range(10)]
+        )
+        st.markdown(hearts_html, unsafe_allow_html=True)
+
 with col2:
     if st.button("No 💔"):
         st.warning(random.choice(dramatic_lines))
