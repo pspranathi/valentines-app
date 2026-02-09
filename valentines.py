@@ -50,7 +50,7 @@ dramatic_lines = [
 col1, col2 = st.columns(2)
 with col1:
     if st.button("Yes 💕"):
-        st.success("💖 Yay! You said YES! 💖 🎉 )
+        st.success("💖 Yay! You said YES! 💖 🎉")
         # Scatter hearts across the whole screen
         hearts_html = "".join(
             [
