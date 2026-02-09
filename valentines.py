@@ -61,12 +61,17 @@ if "yes_clicked" in st.session_state:
     [data-testid="stAppViewContainer"] {
         background-color: black;
     }
+    @keyframes fadein {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
     .love-text {
       text-align: center;
       font-size: 3em;
       font-family: Verdana, Geneva, sans-serif;
       color: limegreen;
       margin-top: 40vh; /* centers vertically */
+      animation: fadein 3s ease-in;
     }
     @keyframes fall {
       0% {transform: translateY(-10%);}
@@ -82,7 +87,7 @@ if "yes_clicked" in st.session_state:
     """
     st.markdown(final_page, unsafe_allow_html=True)
 
-    # Centered green love text
+    # Centered green love text with fade-in
     st.markdown("<div class='love-text'>I LOVE YOU SURAJ PAMADI ❤️</div>", unsafe_allow_html=True)
 
     # Falling hearts
@@ -93,3 +98,8 @@ if "yes_clicked" in st.session_state:
         ]
     )
     st.markdown(hearts_html, unsafe_allow_html=True)
+
+    # Restart button
+    if st.button("🔄 Restart ❤️", key="restart_button"):
+        st.session_state.clear()
+        st.experimental_rerun()
