@@ -3,13 +3,27 @@ import random
 
 st.set_page_config(page_title="Valentine's Surprise", layout="centered")
 
+# --- Shared romantic background for first 2 pages ---
+romantic_bg = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-image: linear-gradient(to bottom right, pink, lavender, mistyrose);
+    background-size: cover;
+}
+[data-testid="stHeader"], [data-testid="stToolbar"] {
+    background: rgba(0,0,0,0);
+}
+</style>
+"""
+
 # --- Intro Screen ---
 if "started" not in st.session_state:
+    st.markdown(romantic_bg, unsafe_allow_html=True)
     st.markdown("<h2 style='text-align:center; color:darkred;'>To the man who supports my dreams and fills my heart:</h2>", unsafe_allow_html=True)
     st.markdown("<h1 style='text-align:center; color:red;'>💝 Happy early Valentine’s Day 💝</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align:center; color:purple;'>Click the heart below to continue...</h3>", unsafe_allow_html=True)
 
-    # Centered heart button (single click works)
+    # Centered heart button (single click works with unique key)
     col = st.columns([1,2,1])
     with col[1]:
         if st.button("❤️", key="start_button"):
@@ -18,6 +32,7 @@ if "started" not in st.session_state:
 
 # --- Valentine Question Page ---
 if "started" in st.session_state and "yes_clicked" not in st.session_state:
+    st.markdown(romantic_bg, unsafe_allow_html=True)
     st.markdown("<h1 style='text-align:center; color:red;'>💝 Happy Valentine's Day 💝</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align:center; color:purple;'>Forever Yours ❤️</h2>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align:center; color:darkred;'>Will you be my Valentine?</h3>", unsafe_allow_html=True)
@@ -39,7 +54,7 @@ if "started" in st.session_state and "yes_clicked" not in st.session_state:
         if st.button("No 💔", key="no_button"):
             st.warning(random.choice(dramatic_lines))
 
-# --- Final Neon Love Page ---
+# --- Final Love Page ---
 if "yes_clicked" in st.session_state:
     final_page = """
     <style>
@@ -49,7 +64,7 @@ if "yes_clicked" in st.session_state:
     .love-text {
       text-align: center;
       font-size: 3em;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Verdana, Geneva, sans-serif;
       color: limegreen;
       margin-top: 40vh; /* centers vertically */
     }
