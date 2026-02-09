@@ -33,7 +33,6 @@ if "started" in st.session_state and "yes_clicked" not in st.session_state:
     with col1:
         if st.button("Yes 💕"):
             st.session_state.yes_clicked = True
-            st.experimental_rerun()
     with col2:
         if st.button("No 💔"):
             st.warning(random.choice(dramatic_lines))
