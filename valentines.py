@@ -16,7 +16,7 @@ if "started" not in st.session_state:
     st.stop()
 
 # --- Valentine Question Page ---
-if "yes_clicked" not in st.session_state:
+if "started" in st.session_state and "yes_clicked" not in st.session_state:
     st.markdown("<h1 style='text-align:center; color:red;'>💝 Happy Valentine's Day 💝</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align:center; color:purple;'>Forever Yours ❤️</h2>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align:center; color:darkred;'>Will you be my Valentine?</h3>", unsafe_allow_html=True)
@@ -25,7 +25,6 @@ if "yes_clicked" not in st.session_state:
         "💔 Oh no... my heart is breaking!",
         "😢 How could you say no to me?",
         "🌹 Without you, Valentine's loses its meaning...",
-        "💫 Destiny insists... you must be mine!",
         "💕 Please... say YES, my love!"
     ]
 
@@ -39,7 +38,7 @@ if "yes_clicked" not in st.session_state:
             st.warning(random.choice(dramatic_lines))
 
 # --- Final Neon Love Page ---
-else:
+if "yes_clicked" in st.session_state:
     neon_page = """
     <style>
     [data-testid="stAppViewContainer"] {
