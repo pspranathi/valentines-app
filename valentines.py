@@ -33,6 +33,7 @@ if "started" in st.session_state and "yes_clicked" not in st.session_state:
     with col1:
         if st.button("Yes 💕"):
             st.session_state.yes_clicked = True
+            st.stop()   # stop here so the final page loads next run
     with col2:
         if st.button("No 💔"):
             st.warning(random.choice(dramatic_lines))
@@ -58,7 +59,6 @@ if "yes_clicked" in st.session_state:
       animation: neon 3s infinite;
     }
 
-    /* Falling hearts animation */
     @keyframes fall {
       0% {transform: translateY(-10%);}
       100% {transform: translateY(110%);}
@@ -73,13 +73,11 @@ if "yes_clicked" in st.session_state:
     """
     st.markdown(neon_page, unsafe_allow_html=True)
 
-    # Neon love text
     st.markdown("<div class='neon-text'>I LOVE YOU SURAJ PAMADI ❤️</div>", unsafe_allow_html=True)
 
-    # Falling hearts across the screen
     hearts_html = "".join(
         [
-            f"<div class='heart' style='left:{random.randint(0,95)}%; color:red; animation-duration:{random.randint(3,6)}s; animation-delay:{random.uniform(0,2)}s;'>❤️</div>"
+            f"<div class='heart' style='left:{random.randint(0,95)}%; animation-duration:{random.randint(3,6)}s; animation-delay:{random.uniform(0,2)}s;'>❤️</div>"
             for _ in range(40)
         ]
     )
