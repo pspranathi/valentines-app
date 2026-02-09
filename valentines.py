@@ -25,6 +25,7 @@ if "started" in st.session_state and "yes_clicked" not in st.session_state:
         "💔 Oh no... my heart is breaking!",
         "😢 How could you say no to me?",
         "🌹 Without you, Valentine's loses its meaning...",
+        "💫 Destiny insists... you must be mine!",
         "💕 Please... say YES, my love!"
     ]
 
