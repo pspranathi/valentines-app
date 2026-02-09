@@ -33,12 +33,22 @@ page_bg = """
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
-# Title
+# --- Intro Screen ---
+if "started" not in st.session_state:
+    st.markdown("<h2 style='text-align:center; color:darkred;'>To the man who supports my dreams and fills my heart:</h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align:center; color:red;'>💝 Happy early Valentine’s Day 💝</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align:center; color:purple;'>Click the heart below to continue...</h3>", unsafe_allow_html=True)
+
+    # Heart button
+    if st.button("❤️"):
+        st.session_state.started = True
+    st.stop()
+
+# --- Main Valentine Question ---
 st.markdown("<h1 style='text-align:center; color:red;'>💝 Happy Valentine's Day 💝</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align:center; color:purple;'>Forever Yours ❤️</h2>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align:center; color:darkred;'>Will you be my Valentine?</h3>", unsafe_allow_html=True)
 
-# Dramatic sentences for "No"
 dramatic_lines = [
     "💔 Oh no... my heart is breaking!",
     "😢 How could you say no to me?",
@@ -46,16 +56,14 @@ dramatic_lines = [
     "💕 Please... say YES, my love!"
 ]
 
-# Buttons
 col1, col2 = st.columns(2)
 with col1:
     if st.button("Yes 💕"):
-        st.success("💖 Yay! You said YES! 💖 🎉")
-        # Scatter hearts across the whole screen
+        st.success("💖 Yay! You said YES! 💖 🎉 ")
         hearts_html = "".join(
             [
                 f"<div class='heart' style='left:{random.randint(0,95)}%; animation-duration:{random.randint(3,6)}s; animation-delay:{random.uniform(0,2)}s;'>❤️</div>"
-                for _ in range(20)
+                for _ in range(30)
             ]
         )
         st.markdown(hearts_html, unsafe_allow_html=True)
