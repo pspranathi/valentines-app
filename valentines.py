@@ -53,13 +53,15 @@ dramatic_lines = [
     "💔 Oh no... my heart is breaking!",
     "😢 How could you say no to me?",
     "🌹 Without you, Valentine's loses its meaning...",
+    "💫 Destiny insists... you must be mine!",
     "💕 Please... say YES, my love!"
 ]
 
 col1, col2 = st.columns(2)
 with col1:
     if st.button("Yes 💕"):
-        st.success("💖 Yay! You said YES! 💖 🎉 ")
+        st.success("💖 Yay! You said YES! 💖 🎉 Balloons burst! 🎈 Confetti everywhere! 💕")
+        # Falling hearts across the screen
         hearts_html = "".join(
             [
                 f"<div class='heart' style='left:{random.randint(0,95)}%; animation-duration:{random.randint(3,6)}s; animation-delay:{random.uniform(0,2)}s;'>❤️</div>"
